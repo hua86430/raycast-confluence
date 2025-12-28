@@ -126,6 +126,8 @@
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.8",
     "eslint": "^9.29.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   },
@@ -133,10 +135,14 @@
     "build": "ray build -o release/v$npm_package_version && rm -rf release/v$npm_package_version/assets && mkdir -p release/v$npm_package_version/assets && cp assets/command-icon.png release/v$npm_package_version/assets/",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
-    "lint": "ray lint"
+    "lint": "ray lint",
+    "prepare": "husky"
   },
   "platforms": [
     "macOS"
   ],
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --fix"
+  },
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }
