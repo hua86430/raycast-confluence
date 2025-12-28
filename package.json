@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "confluence",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Confluence",
   "description": "Quickly navigate, create and search Confluence through Raycast.",
   "icon": "command-icon.png",
