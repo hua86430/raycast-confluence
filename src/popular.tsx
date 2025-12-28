@@ -22,7 +22,9 @@ export default function Command() {
 
   return (
     <List isLoading={!popular}>
-      {popular?.map((content) => <PopularListItem key={content.id} content={content} />)}
+      {popular?.map((content) => (
+        <PopularListItem key={content.id} content={content} />
+      ))}
     </List>
   );
 }
