@@ -58,4 +58,3 @@ function PopularListItem({ content }: { content: Content }) {
     />
   );
 }
-
