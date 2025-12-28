@@ -1,6 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "confluence",
+  "version": "1.0.0",
   "title": "Confluence",
   "description": "Quickly navigate, create and search Confluence through Raycast.",
   "icon": "command-icon.png",
@@ -8,7 +9,8 @@
   "contributors": [
     "xmok",
     "litomore",
-    "arpitdalal"
+    "arpitdalal",
+    "k0981465867"
   ],
   "categories": [
     "Productivity",
@@ -128,7 +130,7 @@
     "typescript": "^5.8.3"
   },
   "scripts": {
-    "build": "ray build",
+    "build": "ray build -o release/v$npm_package_version && rm -rf release/v$npm_package_version/assets && mkdir -p release/v$npm_package_version/assets && cp assets/command-icon.png release/v$npm_package_version/assets/",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
@@ -137,5 +139,6 @@
   },
   "platforms": [
     "macOS"
-  ]
+  ],
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

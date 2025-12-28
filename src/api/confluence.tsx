@@ -102,20 +102,26 @@ export const SEARCH_EXPAND = [
 ].join(",");
 
 function withCQLSpace(search: string, spaceKey?: string, sort?: string): string {
+  let cql = search;
   if (spaceKey) {
-    return search + ` and space.key = "${escCql(spaceKey)}"`;
+    cql += ` and space.key = "${escCql(spaceKey)}"`;
   }
   if (sort) {
-    return search + ` order by ${sort}`;
+    cql += ` order by ${sort}`;
   }
-  return search;
+  return cql;
 }
 
 export async function fetchSearchByText(searchOptions: SearchOptions, signal?: AbortSignal) {
   const { site, spaceKey, text, includeAttachments = false, sort } = searchOptions;
   const types = includeAttachments ? "blogpost,page,attachment" : "blogpost,page";
-  const cql = withCQLSpace(`type IN (${types}) and siteSearch ~ "${escCql(text)}"`, spaceKey, sort);
-  return fetchSearchByCql(site, cql, signal, SEARCH_EXPAND);
+  const cql = withCQLSpace(
+    `type IN (${types}) and (title ~ "${escCql(text)}")`,
+    // `type IN (${types}) and (title ~ "${escCql(text)}" OR text ~ "${escCql(text)}")`,
+    spaceKey,
+    sort,
+  );
+  return fetchSearchByCql(site, cql, signal, SEARCH_EXPAND, 500);
 }
 
 export function sortByLastViewed(recentItems: SearchResult[]) {
