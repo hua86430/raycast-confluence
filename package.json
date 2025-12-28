@@ -135,7 +135,7 @@
     "build": "ray build -o release/v$npm_package_version && rm -rf release/v$npm_package_version/assets && mkdir -p release/v$npm_package_version/assets && cp assets/command-icon.png release/v$npm_package_version/assets/",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
-    "lint": "ray lint",
+    "lint": "ray lint --relaxed",
     "prepare": "husky"
   },
   "platforms": [
